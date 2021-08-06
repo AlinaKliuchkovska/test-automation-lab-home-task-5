@@ -1,13 +1,12 @@
 package rozetkatests;
 
+import businessobject.CartBO;
+import businessobject.CartVerifier;
 import model.RozetkaFilter;
 import model.RozetkaFilters;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.XMLToObject;
-
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class AddToCartTests extends BaseTest {
     private static final int EXPECTED_NUMBER_OF_ITEMS_IN_CART = 1;
@@ -24,14 +23,11 @@ public class AddToCartTests extends BaseTest {
     }
 
     @Test(dataProvider = "filter", threadPoolSize = 3)
-    public void checkThatAddingToCartWorksCorrect(RozetkaFilter rozetkaFilter){
-        getHomePage().enterKeyWordToSearchInput(rozetkaFilter.getGroup());
-        getProductGroupPage().enterBrandToBrandSearchInput(rozetkaFilter.getBrandName())
-                .checkBrandCheckbox(rozetkaFilter.getBrandName()).checkReadyToShipCheckbox()
-                .selectSortingType(rozetkaFilter.getSortingType()).clickOnFirstProduct();
-        getProductPage().clickOnAddToCartButton();
-
-        assertEquals(EXPECTED_NUMBER_OF_ITEMS_IN_CART, getCartPopup().getNumberOfProductsInCart());
-        assertTrue(getCartPopup().getTotalSum() < MAX_SUM);
+    public void checkThatAddingToCartWorksCorrect(RozetkaFilter rozetkaFilter) {
+        CartBO cartBO = new CartBO();
+        CartVerifier cartVerifier = new CartVerifier();
+        cartBO.addToCart(rozetkaFilter);
+        cartVerifier.verifyThatNumberOfItemsInCartIs(EXPECTED_NUMBER_OF_ITEMS_IN_CART);
+        cartVerifier.verifyThatTotalSumInCartLessThan(MAX_SUM);
     }
 }

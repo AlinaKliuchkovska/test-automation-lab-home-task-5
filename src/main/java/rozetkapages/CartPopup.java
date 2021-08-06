@@ -16,7 +16,7 @@ public class CartPopup extends BasePage {
     @FindBy(xpath = "//div[@class='cart-receipt__sum-price']")
     private WebElement totalSum;
 
-    @FindBy(xpath = "//*[text() = ' Корзина ']")
+    @FindBy(xpath = "//div[contains(@class,'modal__holder')]")
     private WebElement cartPopup;
 
     @FindBy(css = ".cart-list__item")
@@ -29,6 +29,6 @@ public class CartPopup extends BasePage {
     }
 
     public int getTotalSum() {
-        return Integer.parseInt(totalSum.getText().replace(" ₴", ""));
+        return Integer.parseInt(totalSum.getText().replaceAll("[^0-9]+", ""));
     }
 }

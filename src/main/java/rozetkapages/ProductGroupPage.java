@@ -22,7 +22,7 @@ public class ProductGroupPage extends BasePage {
     @FindBy(xpath = "//select[contains(@class, 'ng-star-inserted')]")
     private CustomSelect sortingTypeSelect;
 
-    @FindBy(xpath = "//input[@id='Готов к отправке']/ancestor::li")
+    @FindBy(xpath = "//a[contains(@href,'gotovo-k-otpravke')]/ancestor::li")
     private CheckBox readyToShipCheckbox;
 
     @FindBy(xpath = "//button[@class='button button_type_link sidebar-alphabet__toggle']//preceding::input[@class='sidebar-search__input ng-untouched ng-pristine ng-valid']")
