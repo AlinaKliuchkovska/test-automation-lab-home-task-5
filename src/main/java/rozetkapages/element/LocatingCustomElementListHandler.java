@@ -12,10 +12,10 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 public class LocatingCustomElementListHandler
         implements InvocationHandler {
     private final ElementLocator locator;
-    private final Class<IElement> clazz;
+    private final Class<Element> clazz;
 
     public LocatingCustomElementListHandler(ElementLocator locator,
-                                            Class<IElement> clazz) {
+                                            Class<Element> clazz) {
         this.locator = locator;
         this.clazz = clazz;
     }
@@ -24,7 +24,7 @@ public class LocatingCustomElementListHandler
                          Object[] objects) throws Throwable {
 
         List<WebElement> elements = locator.findElements();
-        List<IElement> customs = new ArrayList<IElement>();
+        List<Element> customs = new ArrayList<Element>();
 
         for (WebElement element : elements) {
             customs.add(WrapperFactory.createInstance(clazz, element));

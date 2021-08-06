@@ -3,7 +3,7 @@ package rozetkapages.element;
 import org.openqa.selenium.WebElement;
 
 public class WrapperFactory {
-    public static IElement createInstance(Class<IElement> clazz,
+    public static Element createInstance(Class<Element> clazz,
                                           WebElement element) {
         try {
             return clazz.getConstructor(WebElement.class).

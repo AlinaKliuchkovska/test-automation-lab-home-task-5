@@ -24,7 +24,7 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
 
     @Override
     public Object decorate(ClassLoader loader, Field field) {
-        Class<IElement> decoratableClass = decoratableClass(field);
+        Class<Element> decoratableClass = decoratableClass(field);
         if (decoratableClass != null) {
             ElementLocator locator = factory.createLocator(field);
             if (locator == null) {
@@ -41,7 +41,7 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
     }
 
     @SuppressWarnings("unchecked")
-    private Class<IElement> decoratableClass(Field field) {
+    private Class<Element> decoratableClass(Field field) {
 
         Class<?> clazz = field.getType();
 
@@ -61,29 +61,29 @@ public class CustomFieldDecorator extends DefaultFieldDecorator {
                     getActualTypeArguments()[0];
         }
 
-        if (IElement.class.isAssignableFrom(clazz)) {
-            return (Class<IElement>) clazz;
+        if (Element.class.isAssignableFrom(clazz)) {
+            return (Class<Element>) clazz;
         } else {
             return null;
         }
     }
 
-    protected IElement createElement(ClassLoader loader,
+    protected Element createElement(ClassLoader loader,
                                      ElementLocator locator,
-                                     Class<IElement> clazz) {
+                                     Class<Element> clazz) {
         WebElement proxy = proxyForLocator(loader, locator);
         return WrapperFactory.createInstance(clazz, proxy);
     }
 
     @SuppressWarnings("unchecked")
-    protected List<IElement> createList(ClassLoader loader,
+    protected List<Element> createList(ClassLoader loader,
                                         ElementLocator locator,
-                                        Class<IElement> clazz) {
+                                        Class<Element> clazz) {
 
         InvocationHandler handler =
                 new LocatingCustomElementListHandler(locator, clazz);
-        List<IElement> elements =
-                (List<IElement>) Proxy.newProxyInstance(
+        List<Element> elements =
+                (List<Element>) Proxy.newProxyInstance(
                         loader, new Class[]{List.class}, handler);
         return elements;
     }
