@@ -15,23 +15,11 @@ public class RozetkaFilter {
         return group;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
-    }
-
     public String getSortingType() {
         return sortingType;
     }
 
-    public void setSortingType(String sortingType) {
-        this.sortingType = sortingType;
-    }
-
     public String getBrandName() {
         return brandName;
-    }
-
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
     }
 }

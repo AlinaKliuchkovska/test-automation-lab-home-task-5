@@ -4,7 +4,7 @@
 <suite name="Rozetka" data-provider-thread-count="3">
     <test name="tests.Rozetka">
         <classes>
-            <class name="rozetkatests.AddToCartTests"></class>
+            <class name="rozetkatests.AddToCartTests"/>
         </classes>
     </test>
 </suite>

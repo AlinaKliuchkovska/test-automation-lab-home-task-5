@@ -16,8 +16,4 @@ public class RozetkaFilters {
     public List<RozetkaFilter> getRozetkaFilters() {
         return rozetkaFilters;
     }
-
-    public void setRozetkaFilters(List<RozetkaFilter> rozetkaFilters) {
-        this.rozetkaFilters = rozetkaFilters;
-    }
 }

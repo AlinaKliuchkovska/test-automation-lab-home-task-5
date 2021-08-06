@@ -24,7 +24,7 @@ public class LocatingCustomElementListHandler
                          Object[] objects) throws Throwable {
 
         List<WebElement> elements = locator.findElements();
-        List<Element> customs = new ArrayList<Element>();
+        List<Element> customs = new ArrayList<>();
 
         for (WebElement element : elements) {
             customs.add(WrapperFactory.createInstance(clazz, element));
