@@ -3,13 +3,15 @@ package utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
+
 public class DriverManager {
 
     private static final ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
     private static final PropertiesReader propertiesReader = new PropertiesReader();
 
     public static void setDriver() {
-        System.setProperty(propertiesReader.getDriverName(), propertiesReader.getDriverLocation());
+        chromedriver().setup();
         driverPool.set(new ChromeDriver());
     }
 

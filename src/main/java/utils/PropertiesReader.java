@@ -22,12 +22,4 @@ public class PropertiesReader {
     public String getURL() {
         return property.getProperty("URL");
     }
-
-    public String getDriverName() {
-        return property.getProperty("CHROME_DRIVER_NAME");
-    }
-
-    public String getDriverLocation() {
-        return property.getProperty("CHROME_DRIVER_LOCATION");
-    }
 }

@@ -4,6 +4,8 @@ import businessobject.CartBO;
 import businessobject.CartVerifier;
 import model.RozetkaFilter;
 import model.RozetkaFilters;
+import org.testng.ITestContext;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.XMLToObject;
@@ -11,6 +13,7 @@ import utils.XMLToObject;
 public class AddToCartTests extends BaseTest {
     private static final int EXPECTED_NUMBER_OF_ITEMS_IN_CART = 1;
     private static final int MAX_SUM = 500000;
+//    private static final int threadCount = Integer.getInteger(System.getProperty("thread.count"));
 
     @DataProvider(name = "filter", parallel = true)
     public Object[][] filter() {
